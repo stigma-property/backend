@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/test?useSSL=false&allowPublicKeyRetrieval=true&useUnicode=true&serverTimezone=Asia/Seoul
+    username:
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: update # DB 스키마를 자동으로 관리. update의 경우 변경사항만 반영
+    properties:
+      hibernate: # JPA의 구현체인 Hibernate의 속성 설정
+        show_sql: true # 콘솔에 실행되는 SQL 쿼리를 보여줌
+        format_sql: true # SQL 쿼리를 가독성 좋게 포맷
