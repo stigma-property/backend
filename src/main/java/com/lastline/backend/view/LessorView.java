@@ -1,7 +1,6 @@
 package com.lastline.backend.view;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.Scanner;
 
 import com.lastline.backend.domain.contractRequest.domain.ContractRequest;
@@ -12,7 +11,8 @@ import com.lastline.backend.domain.property.domain.Property;
 import com.lastline.backend.domain.property.dto.PropertyCreateRequest;
 import com.lastline.backend.domain.property.service.PropertyService;
 import com.lastline.backend.domain.user.domain.User;
-import com.lastline.backend.domain.user.repository.UserRepository;
+import com.lastline.backend.domain.user.service.AuthService;
+import com.lastline.backend.domain.user.service.UserService;
 import com.lastline.backend.global.enums.DealType;
 import com.lastline.backend.global.enums.PropertyType;
 import com.lastline.backend.global.enums.RequestStatus;
@@ -21,17 +21,19 @@ import com.lastline.backend.view.ui.UIHelper;
 public class LessorView {
 	private final Scanner scanner;
 	private final User lessor;
+	private final AuthService authService;
+	private final UserService userService;
 	private final PropertyService propertyService;
 	private final ContractService contractService;
-	private final UserRepository userRepository;
 
-	public LessorView(Scanner scanner, User lessor, PropertyService propertyService, ContractService contractService,
-		UserRepository userRepository) {
+	public LessorView(Scanner scanner, User lessor, AuthService authService, UserService userService,
+		PropertyService propertyService, ContractService contractService) {
 		this.scanner = scanner;
 		this.lessor = lessor;
+		this.authService = authService;
+		this.userService = userService;
 		this.propertyService = propertyService;
 		this.contractService = contractService;
-		this.userRepository = userRepository;
 	}
 
 	public void showMenu() {
@@ -1002,18 +1004,12 @@ public class LessorView {
 
 		// 승인된 요청인 경우 임차인 연락처 정보 추가
 		if (request.getStatus() == RequestStatus.APPROVED) {
-			// 임차인 정보 가져오기
-			Optional<User> requesterOptional = userRepository.findById(request.getRequesterId());
-			if (requesterOptional.isPresent()) {
-				User requester = requesterOptional.get();
-				content.append("\n=== 임차인 연락처 정보 ===\n");
-				content.append("📧 이메일: " + requester.getEmail() + "\n");
-				content.append("📞 전화번호: " + requester.getPhoneNumber() + "\n");
-				content.append("📍 주소: " + requester.getAddress() + "\n");
-				content.append("\n💡 승인한 계약 요청입니다. 위 연락처로 임차인에게 연락하세요!\n");
-			} else {
-				content.append("\n임차인 정보를 찾을 수 없습니다.\n");
-			}
+			User requester = userService.getUserById(request.getRequesterId());
+			content.append("\n=== 임차인 연락처 정보 ===\n");
+			content.append("📧 이메일: ").append(requester.getEmail()).append("\n");
+			content.append("📞 전화번호: ").append(requester.getPhoneNumber()).append("\n");
+			content.append("📍 주소: ").append(requester.getAddress()).append("\n");
+			content.append("\n💡 승인한 계약 요청입니다. 위 연락처로 임차인에게 연락하세요!\n");
 		}
 
 		if (request.getStatus() == RequestStatus.REQUESTED) {

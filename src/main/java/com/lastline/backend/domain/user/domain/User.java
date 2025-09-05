@@ -1,75 +1,53 @@
 package com.lastline.backend.domain.user.domain;
 
-import java.util.Objects;
-
-import com.lastline.backend.global.enums.Role;
-
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
+@Entity
+@Table(name = "users")
 @Getter
+@Builder
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor
 public class User {
-	private final Long id;
-	private final String email;
-	private final Role role;
-	private final String phoneNumber;
-	private final String address;
 
-	public User(Long id, String email, Role role) {
-		this.id = id;
-		this.email = email;
-		this.role = role;
-		this.phoneNumber = "010-1234-5678"; // 기본 전화번호
-		this.address = "서울특별시 강남구"; // 기본 주소
-	}
+	@Id
+	@Column(name = "user_id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-	public User(Long id, String email, Role role, String phoneNumber, String address) {
-		this.id = id;
-		this.email = email;
-		this.role = role;
-		this.phoneNumber = phoneNumber;
-		this.address = address;
-	}
+	@Column(name = "email", unique = true)
+	@NotNull
+	private String email;
 
-	@Override
-	public String toString() {
-		return "User{" +
-			"id=" + id +
-			", email='" + email + '\'' +
-			", role=" + role +
-			'}';
-	}
+	@Column(name = "role")
+	@NotNull
+	@Enumerated(EnumType.STRING)
+	private Role role;
 
-	/**
-	 * ID를 기준으로 User 객체를 비교
-	 */
-	@Override
-	public boolean equals(Object o) {
-		if (this == o)
-			return true;
-		if (o == null || getClass() != o.getClass())
-			return false;
-		User user = (User)o;
-		return Objects.equals(id, user.id);
-	}
+	@Column(name = "phone_number")
+	private String phoneNumber;
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(id);
-	}
+	@Column(name = "address")
+	private String address;
 
-	/**
-	 * 사용자가 임대인인지 확인하는 메서드
-	 * @return 임대인이면 true, 그렇지 않으면 false
-	 */
 	public boolean isLessor() {
-		return this.role == Role.LESSOR;
+		return this.role.equals(Role.LESSOR);
 	}
 
-	/**
-	 * 사용자가 임차인인지 확인하는 메서드
-	 * @return 임차인이면 true, 그렇지 않으면 false
-	 */
 	public boolean isLessee() {
-		return this.role == Role.LESSEE;
+		return this.role.equals(Role.LESSEE);
 	}
 }

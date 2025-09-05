@@ -1,30 +1,29 @@
 package com.lastline.backend.view;
 
-import java.util.Optional;
 import java.util.Scanner;
 
 import com.lastline.backend.domain.contractRequest.service.ContractService;
 import com.lastline.backend.domain.property.service.PropertyService;
+import com.lastline.backend.domain.user.domain.Role;
 import com.lastline.backend.domain.user.domain.User;
-import com.lastline.backend.domain.user.repository.UserRepository;
 import com.lastline.backend.domain.user.service.AuthService;
-import com.lastline.backend.global.enums.Role;
+import com.lastline.backend.domain.user.service.UserService;
 import com.lastline.backend.view.ui.UIHelper;
 
 public class MainView {
 	private final Scanner scanner;
 	private final AuthService authService;
+	private final UserService userService;
 	private final PropertyService propertyService;
 	private final ContractService contractService;
-	private final UserRepository userRepository;
 
-	public MainView(AuthService authService, PropertyService propertyService, ContractService contractService,
-		UserRepository userRepository) {
+	public MainView(AuthService authService, UserService userService, PropertyService propertyService,
+		ContractService contractService) {
 		this.scanner = new Scanner(System.in);
 		this.authService = authService;
+		this.userService = userService;
 		this.propertyService = propertyService;
 		this.contractService = contractService;
-		this.userRepository = userRepository;
 	}
 
 	public void start() {
@@ -45,9 +44,8 @@ public class MainView {
 				String email = scanner.nextLine();
 
 				// 이메일을 검증한다.
-				Optional<User> userOptional = authService.login(email);
-				if (userOptional.isPresent()) {
-					User user = userOptional.get();
+				if (authService.login(email)) {
+					User user = userService.getUserByEmail(email);
 					UIHelper.clearScreen();
 					UIHelper.printHeader("부동산 플랫폼");
 
@@ -58,9 +56,9 @@ public class MainView {
 					UIHelper.printBox(user.getEmail(), "로그인 성공", successContent);
 
 					// 사용자 역할에 따라 다른 메뉴 표시
-					if (user.getRole() == Role.LESSOR) {
-						LessorView lessorView = new LessorView(scanner, user, propertyService, contractService,
-							userRepository);
+					if (user.isLessor()) {
+						LessorView lessorView = new LessorView(scanner, user, authService, userService, propertyService,
+							contractService);
 						lessorView.showMenu();
 					} else if (user.getRole() == Role.LESSEE) {
 						LesseeView lesseeView = new LesseeView(scanner, user, propertyService, contractService);

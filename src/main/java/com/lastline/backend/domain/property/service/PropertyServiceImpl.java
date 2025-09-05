@@ -8,7 +8,6 @@ import com.lastline.backend.domain.property.dto.PropertyFilter;
 import com.lastline.backend.domain.property.dto.PropertyUpdateRequest;
 import com.lastline.backend.domain.property.repository.PropertyRepository;
 import com.lastline.backend.domain.user.domain.User;
-import com.lastline.backend.domain.user.repository.UserRepository;
 import com.lastline.backend.global.exception.CustomException;
 import com.lastline.backend.global.exception.ErrorCode;
 
@@ -16,8 +15,7 @@ public class PropertyServiceImpl implements PropertyService {
 	private final PropertyRepository propertyRepository;
 	private final PropertyValidator validator;
 
-	public PropertyServiceImpl(PropertyRepository propertyRepository, UserRepository userRepository,
-		PropertyValidator validator) {
+	public PropertyServiceImpl(PropertyRepository propertyRepository, PropertyValidator validator) {
 		this.propertyRepository = propertyRepository;
 		this.validator = validator;
 	}
