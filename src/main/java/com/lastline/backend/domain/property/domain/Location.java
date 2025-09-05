@@ -2,6 +2,9 @@ package com.lastline.backend.domain.property.domain;
 
 import java.util.Objects;
 
+import lombok.Getter;
+
+@Getter
 public class Location {
 	private final String city; // 시
 	private final String district; // 군/구
@@ -9,14 +12,6 @@ public class Location {
 	public Location(String city, String district) {
 		this.city = city;
 		this.district = district;
-	}
-
-	public String getCity() {
-		return city;
-	}
-
-	public String getDistrict() {
-		return district;
 	}
 
 	@Override

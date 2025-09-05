@@ -5,6 +5,9 @@ import java.util.List;
 import com.lastline.backend.global.enums.DealType;
 import com.lastline.backend.global.enums.PropertyType;
 
+import lombok.Getter;
+
+@Getter
 public class PropertyFilter {
 	private final String city;
 	private final String district;
@@ -20,30 +23,6 @@ public class PropertyFilter {
 		this.dealTypes = builder.dealTypes;
 		this.minPrice = builder.minPrice;
 		this.maxPrice = builder.maxPrice;
-	}
-
-	public String getCity() {
-		return city;
-	}
-
-	public String getDistrict() {
-		return district;
-	}
-
-	public List<PropertyType> getPropertyTypes() {
-		return propertyTypes;
-	}
-
-	public List<DealType> getDealTypes() {
-		return dealTypes;
-	}
-
-	public long getMinPrice() {
-		return minPrice;
-	}
-
-	public long getMaxPrice() {
-		return maxPrice;
 	}
 
 	public static Builder builder() {

@@ -4,6 +4,9 @@ import java.util.Objects;
 
 import com.lastline.backend.global.enums.Role;
 
+import lombok.Getter;
+
+@Getter
 public class User {
 	private final Long id;
 	private final String email;
@@ -25,26 +28,6 @@ public class User {
 		this.role = role;
 		this.phoneNumber = phoneNumber;
 		this.address = address;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public Role getRole() {
-		return role;
-	}
-
-	public String getPhoneNumber() {
-		return phoneNumber;
-	}
-
-	public String getAddress() {
-		return address;
 	}
 
 	@Override

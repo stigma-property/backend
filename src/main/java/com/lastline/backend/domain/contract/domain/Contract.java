@@ -2,6 +2,9 @@ package com.lastline.backend.domain.contract.domain;
 
 import com.lastline.backend.global.enums.ContractStatus;
 
+import lombok.Getter;
+
+@Getter
 public class Contract {
 	private final Long id;
 	private final Long requestId;
@@ -15,23 +18,6 @@ public class Contract {
 		this.contractDate = contractDate;
 		this.moveInDate = moveInDate;
 		this.status = ContractStatus.PENDING;  // 계약 진행 중 상태로 시작
-	}
-
-	// Getter 메서드들
-	public Long getId() {
-		return id;
-	}
-
-	public String getContractDate() {
-		return contractDate;
-	}
-
-	public String getMoveInDate() {
-		return moveInDate;
-	}
-
-	public ContractStatus getStatus() {
-		return status;
 	}
 
 	// Setter 메서드들

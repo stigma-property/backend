@@ -4,6 +4,9 @@ import java.time.LocalDateTime;
 
 import com.lastline.backend.global.enums.RequestStatus;
 
+import lombok.Getter;
+
+@Getter
 public class ContractRequest {
 	private Long id;
 	private final Long requesterId;
@@ -17,27 +20,6 @@ public class ContractRequest {
 		this.propertyId = propertyId;
 		this.status = RequestStatus.REQUESTED; // 생성 시 기본 상태는 <요청 중>
 		this.submittedAt = LocalDateTime.now(); // 생성 시 기본 시간은 <현재 시간>
-	}
-
-	// Getter 메서드들
-	public Long getId() {
-		return id;
-	}
-
-	public Long getRequesterId() {
-		return requesterId;
-	}
-
-	public Long getPropertyId() {
-		return propertyId;
-	}
-
-	public RequestStatus getStatus() {
-		return status;
-	}
-
-	public LocalDateTime getSubmittedAt() {
-		return submittedAt;
 	}
 
 	// Setter 메서드들

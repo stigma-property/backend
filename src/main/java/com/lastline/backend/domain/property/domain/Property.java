@@ -4,6 +4,9 @@ import com.lastline.backend.global.enums.DealType;
 import com.lastline.backend.global.enums.PropertyStatus;
 import com.lastline.backend.global.enums.PropertyType;
 
+import lombok.Getter;
+
+@Getter
 public class Property {
 	private final Long id;
 	private final Long ownerId; // 임대인 ID
@@ -22,35 +25,6 @@ public class Property {
 		this.propertyType = propertyType;
 		this.dealType = dealType;
 		this.status = PropertyStatus.AVAILABLE; // 생성 시 기본 상태는 <거래 가능>
-	}
-
-	// Getter 메서드들
-	public Long getId() {
-		return id;
-	}
-
-	public Long getOwnerId() {
-		return ownerId;
-	}
-
-	public Location getLocation() {
-		return location;
-	}
-
-	public Price getPrice() {
-		return price;
-	}
-
-	public PropertyType getPropertyType() {
-		return propertyType;
-	}
-
-	public DealType getDealType() {
-		return dealType;
-	}
-
-	public PropertyStatus getStatus() {
-		return status;
 	}
 
 	// Setter 메서드들

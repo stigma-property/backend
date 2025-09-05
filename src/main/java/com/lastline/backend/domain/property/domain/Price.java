@@ -2,6 +2,9 @@ package com.lastline.backend.domain.property.domain;
 
 import java.util.Objects;
 
+import lombok.Getter;
+
+@Getter
 public class Price {
 	private final long deposit; // 보증금
 	private final long monthlyRent; // 월세
@@ -9,14 +12,6 @@ public class Price {
 	public Price(long deposit, long monthlyRent) {
 		this.deposit = deposit;
 		this.monthlyRent = monthlyRent;
-	}
-
-	public long getDeposit() {
-		return deposit;
-	}
-
-	public long getMonthlyRent() {
-		return monthlyRent;
 	}
 
 	@Override

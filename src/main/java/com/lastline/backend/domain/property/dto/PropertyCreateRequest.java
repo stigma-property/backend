@@ -5,6 +5,9 @@ import com.lastline.backend.domain.property.domain.Price;
 import com.lastline.backend.global.enums.DealType;
 import com.lastline.backend.global.enums.PropertyType;
 
+import lombok.Getter;
+
+@Getter
 public class PropertyCreateRequest {
 
 	private final Location location;
@@ -17,21 +20,5 @@ public class PropertyCreateRequest {
 		this.price = price;
 		this.propertyType = propertyType;
 		this.dealType = dealType;
-	}
-
-	public Location getLocation() {
-		return location;
-	}
-
-	public Price getPrice() {
-		return price;
-	}
-
-	public PropertyType getPropertyType() {
-		return propertyType;
-	}
-
-	public DealType getDealType() {
-		return dealType;
 	}
 }
