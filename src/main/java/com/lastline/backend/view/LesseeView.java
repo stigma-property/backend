@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import com.lastline.backend.domain.contract.domain.ContractRequest;
-import com.lastline.backend.domain.contract.service.ContractService;
+import com.lastline.backend.domain.contractRequest.domain.ContractRequest;
+import com.lastline.backend.domain.contractRequest.service.ContractService;
 import com.lastline.backend.domain.property.domain.Property;
 import com.lastline.backend.domain.property.dto.PropertyFilter;
 import com.lastline.backend.domain.property.service.PropertyService;

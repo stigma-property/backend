@@ -2,7 +2,7 @@ package com.lastline.backend.global.config;
 
 import java.util.Optional;
 
-import com.lastline.backend.domain.contract.repository.ContractRequestRepository;
+import com.lastline.backend.domain.contractRequest.repository.ContractRequestRepository;
 import com.lastline.backend.domain.property.domain.Location;
 import com.lastline.backend.domain.property.domain.Price;
 import com.lastline.backend.domain.property.domain.Property;

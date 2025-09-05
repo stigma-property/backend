@@ -4,8 +4,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
 
-import com.lastline.backend.domain.contract.domain.ContractRequest;
-import com.lastline.backend.domain.contract.service.ContractService;
+import com.lastline.backend.domain.contractRequest.domain.ContractRequest;
+import com.lastline.backend.domain.contractRequest.service.ContractService;
 import com.lastline.backend.domain.property.domain.Location;
 import com.lastline.backend.domain.property.domain.Price;
 import com.lastline.backend.domain.property.domain.Property;

@@ -3,26 +3,22 @@ package com.lastline.backend.domain.contract.domain;
 import com.lastline.backend.global.enums.ContractStatus;
 
 public class Contract {
-	private final String id;
+	private final Long id;
+	private final Long requestId;
 	private final String contractDate;
 	private final String moveInDate;
 	private ContractStatus status;
-	private final Long propertyId;
-	private final Long requesterId;
-	private final ContractRequest request;
 
-	public Contract(String id, String contractDate, String moveInDate, ContractRequest request) {
+	public Contract(Long id, Long requestId, String contractDate, String moveInDate) {
 		this.id = id;
+		this.requestId = requestId;
 		this.contractDate = contractDate;
 		this.moveInDate = moveInDate;
 		this.status = ContractStatus.PENDING;  // 계약 진행 중 상태로 시작
-		this.request = request;
-		this.propertyId = request.getPropertyId();
-		this.requesterId = request.getRequesterId();
 	}
 
 	// Getter 메서드들
-	public String getId() {
+	public Long getId() {
 		return id;
 	}
 
@@ -36,18 +32,6 @@ public class Contract {
 
 	public ContractStatus getStatus() {
 		return status;
-	}
-
-	public Long getPropertyId() {
-		return propertyId;
-	}
-
-	public Long getRequesterId() {
-		return requesterId;
-	}
-
-	public ContractRequest getRequest() {
-		return request;
 	}
 
 	// Setter 메서드들
@@ -81,19 +65,6 @@ public class Contract {
 		System.out.println("계약이 취소되었습니다: " + this.id);
 	}
 
-	// 상태 확인 메서드들
-	public boolean isPending() {
-		return this.status == ContractStatus.PENDING;
-	}
-
-	public boolean isCompleted() {
-		return this.status == ContractStatus.COMPLETED;
-	}
-
-	public boolean isCancelled() {
-		return this.status == ContractStatus.CANCELLED;
-	}
-
 	@Override
 	public String toString() {
 		return "Contract{" +
@@ -101,9 +72,6 @@ public class Contract {
 			", contractDate='" + contractDate + '\'' +
 			", moveInDate='" + moveInDate + '\'' +
 			", status=" + status +
-			", propertyId=" + propertyId +
-			", requesterId=" + requesterId +
-			", request=" + request +
 			'}';
 	}
 }

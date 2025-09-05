@@ -1,10 +1,10 @@
-package com.lastline.backend.domain.contract.service;
+package com.lastline.backend.domain.contractRequest.service;
 
 import java.util.List;
 import java.util.Optional;
 
-import com.lastline.backend.domain.contract.domain.ContractRequest;
-import com.lastline.backend.domain.contract.repository.ContractRequestRepository;
+import com.lastline.backend.domain.contractRequest.domain.ContractRequest;
+import com.lastline.backend.domain.contractRequest.repository.ContractRequestRepository;
 import com.lastline.backend.domain.property.domain.Property;
 import com.lastline.backend.domain.property.repository.PropertyRepository;
 import com.lastline.backend.domain.user.domain.User;

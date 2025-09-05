@@ -1,4 +1,4 @@
-package com.lastline.backend.domain.contract.repository;
+package com.lastline.backend.domain.contractRequest.repository;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -7,7 +7,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import com.lastline.backend.domain.contract.domain.ContractRequest;
+import com.lastline.backend.domain.contractRequest.domain.ContractRequest;
 import com.lastline.backend.domain.property.domain.Property;
 import com.lastline.backend.domain.property.repository.PropertyRepository;
 import com.lastline.backend.global.enums.RequestStatus;

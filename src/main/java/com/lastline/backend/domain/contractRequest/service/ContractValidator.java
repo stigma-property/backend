@@ -1,6 +1,6 @@
-package com.lastline.backend.domain.contract.service;
+package com.lastline.backend.domain.contractRequest.service;
 
-import com.lastline.backend.domain.contract.domain.ContractRequest;
+import com.lastline.backend.domain.contractRequest.domain.ContractRequest;
 import com.lastline.backend.domain.property.domain.Property;
 import com.lastline.backend.domain.user.domain.User;
 import com.lastline.backend.global.enums.PropertyStatus;

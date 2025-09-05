@@ -3,7 +3,7 @@ package com.lastline.backend.view;
 import java.util.Optional;
 import java.util.Scanner;
 
-import com.lastline.backend.domain.contract.service.ContractService;
+import com.lastline.backend.domain.contractRequest.service.ContractService;
 import com.lastline.backend.domain.property.service.PropertyService;
 import com.lastline.backend.domain.user.domain.User;
 import com.lastline.backend.domain.user.repository.UserRepository;

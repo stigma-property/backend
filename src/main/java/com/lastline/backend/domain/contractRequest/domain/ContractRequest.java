@@ -1,4 +1,4 @@
-package com.lastline.backend.domain.contract.domain;
+package com.lastline.backend.domain.contractRequest.domain;
 
 import java.time.LocalDateTime;
 

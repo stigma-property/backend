@@ -1,8 +1,8 @@
-package com.lastline.backend.domain.contract.service;
+package com.lastline.backend.domain.contractRequest.service;
 
 import java.util.List;
 
-import com.lastline.backend.domain.contract.domain.ContractRequest;
+import com.lastline.backend.domain.contractRequest.domain.ContractRequest;
 import com.lastline.backend.domain.user.domain.User;
 
 public interface ContractService {

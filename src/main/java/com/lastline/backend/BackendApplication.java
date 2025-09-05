@@ -1,9 +1,9 @@
 package com.lastline.backend;
 
-import com.lastline.backend.domain.contract.repository.ContractRequestRepository;
-import com.lastline.backend.domain.contract.service.ContractService;
-import com.lastline.backend.domain.contract.service.ContractServiceImpl;
-import com.lastline.backend.domain.contract.service.ContractValidator;
+import com.lastline.backend.domain.contractRequest.repository.ContractRequestRepository;
+import com.lastline.backend.domain.contractRequest.service.ContractService;
+import com.lastline.backend.domain.contractRequest.service.ContractServiceImpl;
+import com.lastline.backend.domain.contractRequest.service.ContractValidator;
 import com.lastline.backend.domain.property.repository.PropertyRepository;
 import com.lastline.backend.domain.property.service.PropertyService;
 import com.lastline.backend.domain.property.service.PropertyServiceImpl;
